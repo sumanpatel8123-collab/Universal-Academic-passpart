@@ -11,7 +11,7 @@ export const STELLAR_TESTNET_CONFIG = {
   networkPassphrase: "Test SDF Network ; September 2015",
   rpcUrl: "https://soroban-testnet.stellar.org",
   horizonUrl: "https://horizon-testnet.stellar.org",
-  contractId: "CCACADEMICPASSPORT1111111111111111111111111111111111111111",
+  contractId: "CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE",
   issuanceFeeXlm: "0.1", // Minimal XLM fee for issuing credentials
 };
 

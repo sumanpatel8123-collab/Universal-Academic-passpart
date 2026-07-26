@@ -3,11 +3,25 @@
 ![Stellar Soroban](https://img.shields.io/badge/Stellar-Soroban%20Smart%20Contracts-00F2FE?style=for-the-badge&logo=stellar)
 ![Next.js](https://img.shields.io/badge/Next.js-15%20App%20Router-000000?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript)
-![Rust](https://img.shields.io/badge/Rust-Soroban%20SDK%2020.0-000000?style=for-the-badge&logo=rust)
+![Rust](https://img.shields.io/badge/Rust-Soroban%20SDK%2022.0-000000?style=for-the-badge&logo=rust)
+![Deployed](https://img.shields.io/badge/Contract-Live%20on%20Testnet-00C853?style=for-the-badge&logo=stellar)
 
 A production-ready Web3 decentralized academic credential verification platform powered by **Stellar Soroban Smart Contracts (Rust)**, **Freighter Wallet**, and a startup-grade **Next.js** dark-mode interface. 
 
 Academic institutions can issue non-transferable (soulbound) academic degrees directly onto the Stellar Testnet, empowering students with tamper-proof, globally verifiable digital passports.
+
+---
+
+## 🚀 Deployed Contract (Stellar Testnet)
+
+| Field | Value |
+|---|---|
+| **Network** | Stellar Testnet (`Test SDF Network ; September 2015`) |
+| **Contract ID** | `CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE` |
+| **Admin Address** | `GA4SSMJLD5DRYI46KGZWRIVVYRT4UX4S2HBVO5QOZG2UYHWMB42H4YG6` |
+| **WASM Hash** | `b425e440567b3fe3c8f2cab06931ec77b94395482122b6d7510f052c38e56673` |
+| **Deploy Tx** | [View on Stellar Expert](https://stellar.expert/explorer/testnet/tx/2bda28ca6c8be33fce04ab90feef808dd6b5375b0f9a4a7641cb5b85cbb7aa9f) |
+| **Contract Explorer** | [View Contract](https://lab.stellar.org/r/testnet/contract/CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE) |
 
 ---
 
@@ -118,22 +132,27 @@ universal-academic-passport/
    soroban config identity fund admin --network testnet
 
    # Deploy compiled Wasm contract
-   soroban contract deploy \
-     --wasm target/wasm32-unknown-unknown/release/academic_passport_contract.wasm \
+   stellar contract build
+   ```
+
+4. Deploy compiled Wasm contract:
+   ```bash
+   stellar contract deploy \
+     --wasm target/wasm32v1-none/release/academic_passport_contract.wasm \
      --source admin \
      --network testnet
    ```
-   *Save the returned Contract ID (e.g. `CC...`).*
+   *The project's live Contract ID is: `CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE`*
 
 5. Initialize contract with admin address:
    ```bash
-   soroban contract invoke \
-     --id <YOUR_CONTRACT_ID> \
+   stellar contract invoke \
+     --id CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE \
      --source admin \
      --network testnet \
      -- \
      initialize \
-     --admin <ADMIN_STELLAR_ADDRESS>
+     --admin GA4SSMJLD5DRYI46KGZWRIVVYRT4UX4S2HBVO5QOZG2UYHWMB42H4YG6
    ```
 
 ---
@@ -153,9 +172,9 @@ universal-academic-passport/
 3. Configure environment variable (optional, default provided in `stellar.ts`):
    Create `.env.local`:
    ```env
-   NEXT_PUBLIC_SOROBAN_CONTRACT_ID=<YOUR_CONTRACT_ID>
+   NEXT_PUBLIC_SOROBAN_CONTRACT_ID=CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE
    NEXT_PUBLIC_STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
-   NEXT_PUBLIC_SOROBAN_RPC_URL="[https://soroban-testnet.stellar.org](https://soroban-testnet.stellar.org)"
+   NEXT_PUBLIC_SOROBAN_RPC_URL="https://soroban-testnet.stellar.org"
    ```
 
 4. Start the Next.js development server:
