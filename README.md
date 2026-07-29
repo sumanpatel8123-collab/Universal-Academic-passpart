@@ -155,7 +155,8 @@ universal-academic-passport/
      --admin GA4SSMJLD5DRYI46KGZWRIVVYRT4UX4S2HBVO5QOZG2UYHWMB42H4YG6
    ```
 
----
+> ✅ **Already deployed!** Contract is live at:
+> CDWPIQM53DMCFMC4E7CCX7TOXSKVVTWBXDCPKV3SLEPZP65TKAPXEYIE
 
 ### Step 2: Frontend Setup & Running
 
